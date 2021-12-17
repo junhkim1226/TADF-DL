@@ -85,6 +85,7 @@ python -u ../script/test.py \
 An explanation of the options can be found in `src/model_directory/script/test.py`.
 
 or
+
 Run `python src/model_directory/script/test.py --help`.
 
 You can check test loss in `scr/model_directory/train/test_results.txt`.
