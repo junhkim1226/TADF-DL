@@ -2,16 +2,15 @@ from tqdm import tqdm
 from rdkit import Chem
 from rdkit.Chem import AllChem
 from multiprocessing import Pool
+import os
+import random
+from rdkit.Chem import ChemicalFeatures
+from rdkit import RDConfig
+
+fdefName = os.path.join(RDConfig.RDDataDir,'BaseFeatures.fdef')
+factory = ChemicalFeatures.BuildFeatureFactory(fdefName)
 
 def filt_data(line):
-    '''
-    Extract small organic molecules
-    Rules
-    1. Molecules don't have any metallic element and parital charge.
-    2. 6 < The number of atoms in each molecule < 50
-    3. SMILES must have '3' ward to extract conjugated system.
-    '''
-
     except_list = ['F', 'Cl', 'Br','I','U', 'Te', 'Se', 'Tl', 'Tc','+','.','P=O','P(=O)', 'S=O','S(=O)','Pb','Mn', '-]','A','G','Hg','Sn','Bi','Sb','Nb','V','Cr','W','Co','Pt','Os', 'Mo', 'Rh', 'Ta', 'Ni', 'Re', 'Pd', 'Zn', 'Ru', 'Zr', 'Po', 'Xe', 'Y', 'Cu', 'Sr', 'Pr','*']
 
     try:
@@ -49,4 +48,29 @@ if __name__ =='__main__':
     for result in results:
         if result != 0:
             f.write(result)
+    f.close()
+
+    random.seed(0)
+    inp = 'screened_molecule.txt'
+    num_data = 50000
+
+    f = open(inp,'r')
+    lines = f.readlines()
+    f.close()
+
+    sample_list = random.sample(lines,num_data)
+    f = open('sampled_data.txt','w')
+    for line in sample_list:
+        cnt = 0
+
+        CID,smiles = line.strip().split()
+
+        mol = Chem.MolFromSmiles(smiles)
+        feats = factory.GetFeaturesForMol(mol)
+
+        for i in range(len(feats)):
+            if feats[i].GetFamily() == 'Aromatic':
+                cnt += 1
+        if cnt > 0:
+            f.write(line)
     f.close()
