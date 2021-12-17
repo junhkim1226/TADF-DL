@@ -1,6 +1,6 @@
 # TADF-DL
 
-github of *Effect of molecular representation on deep learning performance for prediction of molecular electronic properties* by Jun Hyeong Kim, Hyeonsu Kim, Woo Youn Kim.
+Github repository of *Effect of molecular representation on deep learning performance for prediction of molecular electronic properties* by Jun Hyeong Kim, Hyeonsu Kim, Woo Youn Kim.
 
 ## Table of Contents
 
