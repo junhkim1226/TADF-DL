@@ -58,11 +58,13 @@ python -u ../script/train.py \
 --N_properties $N_PROPERTIES \
 --dropout $DROPOUT 1> ./results/log.txt
 ```
-An explanation of the options can be found in `src/model_directory/script/train.py.
-or
-Run `python src/model_directory/script/train.py --help`
+An explanation of the options can be found in `src/model_directory/script/train.py`.
 
-You can check train loss and validation loss in `scr/model_directory/train/result/log.txt`
+or
+
+Run `python src/model_directory/script/train.py --help`.
+
+You can check train loss and validation loss in `scr/model_directory/train/result/log.txt`.
 
 ## Test
 
@@ -80,10 +82,11 @@ python -u ../script/test.py \
 --N_properties $N_PROPERTIES \
 --dropout $DROPOUT
 ```
-An explanation of the options can be found in `src/model_directory/script/test.py.
-or
-Run `python src/model_directory/script/test.py --help`
+An explanation of the options can be found in `src/model_directory/script/test.py`.
 
-You can check test loss in `scr/model_directory/train/test_results.txt`
+or
+Run `python src/model_directory/script/test.py --help`.
+
+You can check test loss in `scr/model_directory/train/test_results.txt`.
 
 
