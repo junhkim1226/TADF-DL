@@ -16,9 +16,9 @@ Github repository of *Effect of molecular representation on deep learning perfor
 - [RDKit](https://www.rdkit.org/docs/Install.html)>=2020.09.3
 
 ## Data
-### Extract molecules from PubChem
+### Preprocessing
 
-Move to `extract_data/`. Run `extract.py` to get aromatic ring dataset from PubChem.
+Move to `preprocessing/`. Run `extract.py` to get aromatic ring dataset.
 
 ### Data Structure
 
