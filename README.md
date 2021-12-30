@@ -20,6 +20,8 @@ Github repository of *Effect of molecular representation on deep learning perfor
 
 Move to `preprocessing/`. Run `extract.py` to get aromatic ring dataset.
 
+We used the PubChem database included up to CID 139598315.
+
 ### Data Structure
 
 Basic data structure is shown below
