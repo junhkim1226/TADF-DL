@@ -8,6 +8,7 @@ Github repository of *Effect of molecular representation on deep learning perfor
 - [Data](#data)
 - [Train](#train)
 - [Test](#test)
+- [AGGNN](#aggnn)
 
 ## Environmental
 
@@ -92,4 +93,7 @@ Run `python src/model_directory/script/test.py --help`.
 
 You can check test loss in `scr/model_directory/train/test_results.txt`.
 
+## AGGNN
+
+AGGNN code is available in https://github.com/edvardlindelof/graph-neural-networks-for-drug-discovery
 
