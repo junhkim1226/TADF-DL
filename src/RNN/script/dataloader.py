@@ -26,8 +26,8 @@ def collate_fn(batch) :
     return sample
 
 def get_dataset_dataloader(fn, maxlen,batch_size=8, shuffle=True,
-                           num_workers=1, length=None):
-    dataset = RNNDataset(fn, maxlen,length)
+                           num_workers=1, c_to_i, length=None):
+    dataset = RNNDataset(fn, maxlen, c_to_i, length)
     dataloader = DataLoader(dataset, batch_size=batch_size,
                             num_workers=num_workers, shuffle=shuffle, drop_last=False,
                             pin_memory=True)
