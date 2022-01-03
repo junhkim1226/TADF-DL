@@ -5,7 +5,6 @@ import math
 import subprocess
 import os
 
-#from Bio.PDB import *
 import numpy as np
 from rdkit import Chem
 from rdkit.Chem import AllChem
@@ -15,7 +14,7 @@ import torch.nn as nn
 
 ##### Setting for Molecular Graph #####
 
-SYMBOLS = ["B", "C", "N", "O", "F", "P", "S","X"]
+SYMBOLS = ["B", "C", "N", "O", "P", "S", "X"]
 DEGREE = [0, 1, 2, 3, 4, 5, 6]
 IMPLICIT_VALENCE = [0, 1, 2, 3, 4, 5, 6]
 HYBRIDIZATION = [
@@ -78,43 +77,6 @@ def atom_to_onehot(mol):
         atom_features[i, :] = atom_feature
     atom_features = np.array(atom_features).astype(int)
     return atom_features
-
-'''\
-def get_bond_features(bond):
-    """\
-    bond_features(...) -> list[int]
-
-    One-hot encode `bond` w/ or w/o extra concatenation.
-
-    Parameters
-    ----------
-    bond: rdkit.Chem.Bond
-    include_extra: bool
-    """
-    bt = one_of_k_encoding(bond, BOND_TYPES)
-    return bt
-
-
-def bond_to_onehot(mol):
-    n_atoms = mol.GetNumAtoms()
-    bonds = np.zeros((n_atoms, n_atoms, len(BOND_TYPES)))
-    for i in range(n_atoms):
-        for j in range(n_atoms):
-            bond = mol.GetBondBetweenAtoms(i, j)
-            if bond:
-                bond_type = bond.GetBondType()
-            else:
-                bond_type = Chem.rdchem.BondType.UNSPECIFIED
-            bf = get_bond_features(bond_type)
-            if bf is None:
-                return None
-            bonds[i, j, :] = bf
-            # bonds -> [atom i, neighbor atom j, bond feature]
-            # bonds[i,j,:] -> bond feature between atom_i and atom_j
-    bonds = np.array(bonds).astype(int)
-    return bonds
-'''
-
 
 def mol_to_feature(smiles):
     # Molecule features in onehot
@@ -192,9 +154,3 @@ def print_results(epoch, results, msg_length):
 
 def get_abs_path(path):
     return os.path.realpath(os.path.expanduser(path))
-
-if __name__ == '__main__':
-    smiles = 'CCCC'
-    dict = mol_to_feature(smiles)
-    adj = dict['af']
-    print(adj.shape)
