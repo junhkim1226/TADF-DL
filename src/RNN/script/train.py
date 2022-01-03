@@ -74,8 +74,8 @@ if __name__ == "__main__":
     # Optimizer setting
     optimizer = optim.Adam(model.parameters(), lr=args.lr)
 
-    train_dataset, train_dataloader = get_dataset_dataloader(train_file, batch_size=args.batch_size, shuffle=True,num_workers=args.num_workers,maxlen=args.maxlen)
-    val_dataset, val_dataloader = get_dataset_dataloader(val_file, batch_size=args.batch_size, shuffle=True,num_workers=args.num_workers,maxlen=args.maxlen)
+    train_dataset, train_dataloader = get_dataset_dataloader(train_file, batch_size=args.batch_size, shuffle=True,num_workers=args.num_workers,maxlen=args.maxlen,c_to_i=c_to_i)
+    val_dataset, val_dataloader = get_dataset_dataloader(val_file, batch_size=args.batch_size, shuffle=True,num_workers=args.num_workers,maxlen=args.maxlen,c_to_i=c_to_i)
 
     msg = "Epoch\tTrain_Loss\tVal_Loss\t\tTime"
     msg_length = [len(m) for m in msg.split("\t")]
