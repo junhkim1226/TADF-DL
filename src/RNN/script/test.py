@@ -59,7 +59,7 @@ if __name__ == "__main__":
 
     test_dataset, test_dataloader = get_dataset_dataloader(test_file,
             batch_size=args.batch_size, shuffle=True,
-            num_workers=args.num_workers,maxlen=args.maxlen)
+            num_workers=args.num_workers,maxlen=args.maxlen,c_to_i=c_to_i)
 
     with torch.no_grad():
         st = time.time()
