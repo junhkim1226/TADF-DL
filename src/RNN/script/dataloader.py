@@ -60,7 +60,7 @@ def adjust_smiles(smiles_list,maxlen):
 
 class RNNDataset(Dataset):
 
-    def __init__(self, fn, maxlen, length=None):
+    def __init__(self, fn, maxlen, c_to_i, length=None):
         with open(fn, "r") as f:
             lines = f.readlines()
             lines = [line.split() for line in lines]
@@ -78,7 +78,7 @@ class RNNDataset(Dataset):
                 self.smiles.append(w_smiles)
                 self.target.append((float(w_H),float(w_L),float(w_S),float(w_T)))
 
-        self.c_to_i = {'C': 0, 'O': 1, '1': 2, '=': 3, '(': 4, ')': 5, 'N': 6, 'S': 7, '2': 8, '3': 9, '4': 10, '/': 11, '5': 12, '6': 13, '\\': 14, '[': 15, '@': 16, 'H': 17, ']': 18, '#': 19, '7': 20, 'P': 21, '8': 22, '9': 23, 'B': 24, 'X' : 25}
+        self.c_to_i = c_to_i
         adjust_smiles(self.smiles,maxlen)
         self.seq_list = self.encode_smiles()
         self.length_list = []
@@ -112,15 +112,3 @@ class RNNDataset(Dataset):
 
     def __len__(self):
         return len(self.data)
-
-if __name__ == "__main__":
-    fn='../data/test.txt'
-
-    dataset, data_loader = get_dataset_dataloader(
-        fn, batch_size=4, num_workers=1)
-    data_iter = iter(data_loader)
-    #print(data_iter)
-    #sample = next(data_iter)
-    #print(sample)
-    for idx,batch in enumerate(data_loader):
-        print(batch['fp'])
