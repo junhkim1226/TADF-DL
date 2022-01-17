@@ -34,15 +34,7 @@ class GCN(nn.Module):
         self.gat_layers = nn.ModuleList(
                 [GCN_layer(self.dim_of_conv_layer,self.dim_of_conv_layer,self.dropout) for _ in
                     range(self.N_predict_layer)])
-        '''\
-        self.prop_predict = \
-            nn.ModuleList([
-                nn.Sequential(nn.Linear(self.dim_of_conv_layer,self.dim_of_conv_layer),
-                              nn.Dropout(p=self.dropout))
-                for _ in range(self.N_predict_layer-1)] +
-                [nn.Linear(self.dim_of_conv_layer,self.dim_of_conv_layer)
-            ])
-        '''
+
         self.readout = nn.Linear(self.dim_of_conv_layer,self.dim_of_FC)
 
         self.predict = \
