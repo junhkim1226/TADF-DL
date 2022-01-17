@@ -39,7 +39,7 @@ id2   Cc1ccccc1    -5.5    -1.5    2.7   2.3
 ...
 ```
 Data file should be in `src/model_directory/data/.`
-Then, run `dataset_divide.py` to split dataset into train set and validation set, test set.
+Then, run `dataset_divide.py` to split dataset into training set and validation set, test set.
 
 ## Train
 
