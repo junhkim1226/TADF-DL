@@ -9,9 +9,9 @@ import dataloader
 from layers import MLP
 
 
-class DescriptorMLP(nn.Module):
+class ConcatMLP(nn.Module):
     def __init__(self, args):
-        super(DescriptorMLP, self).__init__()
+        super(ConcatMLP, self).__init__()
 
         # Argument Define
         self.dim_of_desc = args.desc_dim

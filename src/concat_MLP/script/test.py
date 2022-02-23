@@ -9,7 +9,7 @@ import numpy as np
 
 from dataloader import get_dataset_dataloader
 from sklearn.metrics import r2_score
-from model import DescriptorMLP
+from model import ConcatMLP
 import utils
 
 import argparse
@@ -44,7 +44,7 @@ if __name__ == "__main__":
         restart_file = utils.get_abs_path(args.restart_file)
 
     # Model setting
-    model = DescriptorMLP(args)
+    model = ConcatMLP(args)
 
     #visible_devices = utils.set_cuda_visible_device(args.ngpus)
     #os.environ["CUDA_VISIBLE_DEVICES"] = visible_devices[:-1]

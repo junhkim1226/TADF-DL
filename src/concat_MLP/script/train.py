@@ -8,7 +8,7 @@ import torch.optim as optim
 import numpy as np
 
 from dataloader import get_dataset_dataloader
-from model import DescriptorMLP
+from model import ConcatMLP
 import utils
 
 import argparse
@@ -55,7 +55,7 @@ if __name__ == "__main__":
         os.mkdir(save_dir)
 
     # Model setting
-    model = DescriptorMLP(args)
+    model = ConcatMLP(args)
 
     device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
     model = utils.initialize_model(model, device, restart_file)

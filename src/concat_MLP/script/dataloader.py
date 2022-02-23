@@ -12,7 +12,7 @@ import utils
 
 def get_dataset_dataloader(fn, batch_size=8, shuffle=True,
                            num_workers=1, length=None):
-    dataset = DescriptorDataset(fn, length)
+    dataset = ConcatDataset(fn, length)
     dataloader = DataLoader(dataset, batch_size=batch_size,
                             num_workers=num_workers, shuffle=shuffle, drop_last=False,
                             pin_memory=True)
@@ -23,7 +23,7 @@ def get_feature(smiles):
     features = generator.process(smiles)
     return features[1:]
 
-class DescriptorDataset(Dataset):
+class ConcatDataset(Dataset):
     def __init__(self, fn, length=None):
         with open(fn, "r") as f:
             lines = f.readlines()
