@@ -25,17 +25,9 @@ HYBRIDIZATION = [
     Chem.rdchem.HybridizationType.SP3D2,
 ]
 TOTAL_NUMHS = [0, 1, 2, 3, 4]
-BOND_TYPES = [
-    Chem.rdchem.BondType.SINGLE,
-    Chem.rdchem.BondType.DOUBLE,
-    Chem.rdchem.BondType.TRIPLE,
-    Chem.rdchem.BondType.AROMATIC,
-    Chem.rdchem.BondType.UNSPECIFIED
 ]
 N_atom_features = len(SYMBOLS)
-N_bond_features = len(BOND_TYPES)
 N_extra_atom_features = len(HYBRIDIZATION + DEGREE + TOTAL_NUMHS + IMPLICIT_VALENCE)+1
-N_extra_bond_features = 0
 
 
 def one_of_k_encoding(x, allowable_set):
