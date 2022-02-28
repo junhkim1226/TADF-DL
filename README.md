@@ -15,6 +15,7 @@ Github repository of *Effect of molecular representation on deep learning perfor
 - python>=3.7
 - [PyTorch](https://pytorch.org/)=1.7.1
 - [RDKit](https://www.rdkit.org/docs/Install.html)>=2020.09.3
+- [descriptastorus](https://github.com/bp-kelley/descriptastorus)
 
 ## Data
 ### Preprocessing
