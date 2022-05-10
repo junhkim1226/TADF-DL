@@ -31,7 +31,7 @@ class GCN(nn.Module):
         # Layer Define
         self.embed_graph = nn.Linear(self.N_atom_features + self.N_extra_atom_features, self.dim_of_conv_layer)
 
-        self.gat_layers = nn.ModuleList(
+        self.GCN_layers = nn.ModuleList(
                 [GCN_layer(self.dim_of_conv_layer,self.dim_of_conv_layer,self.dropout) for _ in
                     range(self.N_predict_layer)])
 
@@ -49,7 +49,7 @@ class GCN(nn.Module):
     def forward(self, x, A ,atom_mask):
         x = self.embed_graph(x)
 
-        for layer in self.gat_layers:
+        for layer in self.GCN_layers:
             x = layer(x, A)
 
         x = self.readout(x)
